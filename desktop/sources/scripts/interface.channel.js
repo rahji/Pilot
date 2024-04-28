@@ -63,7 +63,8 @@ export default function ChannelInterface (pilot, id, node) {
     if (this.lastNote && performance.now() - this.lastNote < 100) { return }
     const name = `${data.note}${data.sharp}${data.octave}`
     const length = clamp(data.length, 0.1, 0.9)
-    this.node.triggerAttackRelease(name, length, '+0', data.velocity)
+    const velocity = clamp(data.velocity, 0.0, 1.0)
+    this.node.triggerAttackRelease(name, length, '+0', velocity)
     this.lastNote = performance.now()
   }
 
