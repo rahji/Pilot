@@ -23,7 +23,7 @@ Pilot has 16 voices, and 8 effects. Commands can be entered directly with the in
 
 #### Play
 
-The Play commands allows you to play synth notes.
+The Play commands allows you to play synth notes. The play command format is a **channel** value between `0-G`, an octave value between `0-8`, a letter for the note (where lowercase letters are sharps), a velocity between `0-F`, and a length from `0-F`.
 
 | Command  | Channel | Octave | Note | Velocity | Length |
 | :-       | :-:     | :-:    | :-:  | :-:      | :-:    |
@@ -33,12 +33,41 @@ The Play commands allows you to play synth notes.
 
 #### Settings
 
-The Settings commands allow you to change the sound of the synth. The settings command format is a **channel** value between `0-G`, a 3 characters long **name**, followed by four values between `0-G`. The possible waveforms are `si`, `2i`, `4i`, `8i`, `tr`, `2r`, `4r`, `8r`, `sq`, `2q`, `4q` `8q`, `sw`, `2w`, `4w` and `8w`.
+The Settings commands allow you to change the sound of the synth. 
+
+To change the envelope, the settings command format is a **channel** value between `0-G`, the string `ENV`, and four values between `0-G`.
 
 | Command     | Channel | Name         | Info |
 | :-          | :-      | :-           | :-   |                    
 | `0ENV056f`  | 0       | Envelope     | Set **Attack**:0.00, **Decay**:0.33, **Sustain**:0.40 and **Release**:1.00 |
-| `1OSCsisq`  | 1       | Oscilloscope | Set **Osc1**:Sine, **Osc2**:Square |
+
+To change the oscillator, the settings command format is a **channel** value between `0-G`, the string `OSC`, two characters defining the primary oscillator, and two characters defining the modulation oscillator.
+
+| Command     | Channel | Name         | Info |
+| :-          | :-      | :-           | :-   |                    
+| `1OSCsisq`  | 1       | Oscillator   | Set **Primary Oscillator**:Sine, **Modulation Oscillator**:Square |
+| `8OSCtrsw`  | 8       | Oscillator   | Set **Primary Oscillator**:Triangle, **Modulation Oscillator**:Sawtooth |
+
+The possible waveforms are shown in the table below.
+
+| Abbreviation | Waveform |
+| :-           | :-       |                    
+| si | sine               |
+| tr | triangle           | 
+| sq | square             |
+| sw | sawtooth           |
+| 2i | sine2              |
+| 2r | triangle2          |
+| 2q | square2            |
+| 2w | sawtooth2          |
+| 4i | sine4              |
+| 4r | triangle4          |
+| 4q | square4            |
+| 4w | sawtooth4          |
+| 8i | sine8              |
+| 8r | triangle8          |
+| 8q | square8            |
+| 8w | sawtooth8          |
 
 ### Global
 
